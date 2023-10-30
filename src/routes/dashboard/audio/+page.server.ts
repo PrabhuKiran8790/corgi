@@ -73,7 +73,8 @@ export const actions: Actions = {
 				serviceType: {
 					service: 'audio',
 					increment: 1
-				}
+				},
+				userSubscriptionData: userSubscriptionData
 			});
 		}
 

@@ -3,10 +3,9 @@ import { replicate } from '$lib/api-providers';
 import { incrementCreditsUsed } from '$lib/db/utils';
 import { fail, type Actions } from '@sveltejs/kit';
 
-
 export const config = {
-	runtime: "edge"
-}
+	runtime: 'edge'
+};
 
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
@@ -54,11 +53,13 @@ export const actions: Actions = {
 					email: user?.email as string,
 					userData: userData,
 					serviceType: {
-						service: "imageRestoration",
+						service: 'imageRestoration',
 						increment: 1
-					}
+					},
+					userSubscriptionData: userSubscriptionData
 				});
 			}
+
 
 			return { uploadedFileURL, output };
 		} catch (error) {

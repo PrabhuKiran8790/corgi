@@ -12,17 +12,15 @@ function convertToImageType(inputValue: string): ImageSizes {
 	return imageSize;
 }
 
-
 export const load: PageServerLoad = async () => {
 	return {
 		imageForm: await superValidate(imageFormSchema)
 	};
 };
 
-
 export const config = {
-	runtime: "edge"
-}
+	runtime: 'edge'
+};
 
 export const actions: Actions = {
 	default: async (event) => {
@@ -76,7 +74,8 @@ export const actions: Actions = {
 				serviceType: {
 					service: 'image',
 					increment: 1
-				}
+				},
+				userSubscriptionData: userSubscriptionData
 			});
 		}
 

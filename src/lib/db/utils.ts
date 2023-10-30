@@ -150,7 +150,7 @@ export const incrementCreditsUsed = async ({
 			.update(userSubscription)
 			.set({
 				imageGenerationCreditsUsed:
-					(userSubscriptionData?.imageRestorationCreditsUsed as number) + 1,
+					(userSubscriptionData?.imageGenerationCreditsUsed as number) + 1,
 			})
 			.where(eq(userSubscription.email, email));
 		return;

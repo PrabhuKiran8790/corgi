@@ -62,8 +62,7 @@ export const userSubscription = pgTable('userSubscription', {
 	stripeCurrentPeriodEnd: timestamp('stripeCurrentPeriodEnd', {
 		mode: 'date'
 	}).notNull(),
-
-	imageGenerationCreditsUsed: integer('imageGenerationCreditsUsed').default(0).notNull(),
-	audioGenerationCreditsUsed: integer('audioGenerationCreditsUsed').default(0).notNull(),
-	imageRestorationCreditsUsed: integer('imageRestorationCreditsUsed').default(0).notNull()
+	imageGenerationCreditsUsed: integer('imageGenerationCreditsUsed').notNull().default(0),
+	audioGenerationCreditsUsed: integer('audioGenerationCreditsUsed').notNull().default(0),
+	imageRestorationCreditsUsed: integer('imageRestorationCreditsUsed').notNull().default(0)
 });
