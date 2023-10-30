@@ -4,7 +4,7 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 
 
 export const config = {
-	runtine: "edge"
+	runtime: "edge"
 }
 export const POST = async (event) => {
 	try {
