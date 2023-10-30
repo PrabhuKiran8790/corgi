@@ -43,7 +43,6 @@
 		"axios": "^1.6.0",
 		"bits-ui": "^0.8.4",
 		"clsx": "^2.0.0",
-		"dotenv": "^16.3.1",
 		"drizzle-orm": "^0.28.6",
 		"formsnap": "^0.2.0",
 		"highlight.js": "^11.9.0",
