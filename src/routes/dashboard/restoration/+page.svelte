@@ -2,15 +2,16 @@
 	import { enhance } from '$app/forms';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Download, Loader2, Sparkles, Upload } from 'lucide-svelte';
-	import type { ActionData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { premiumDialogOpen, premiumTierLimitDialogOpen } from '$lib/stores';
-	import { page } from '$app/stores';
 	import axios from 'axios';
 	import { PUBLIC_CLOUDINARY_UPLOAD_PRESET, PUBLIC_PREMIUM_TIER_CREDITS } from '$env/static/public';
 	import { toast } from 'svelte-sonner';
 	import { invalidateAll } from '$app/navigation';
+
+	export let data: PageData;
 
 	let uploadedFileURL: string;
 	let localsrc: string;
@@ -39,16 +40,13 @@
 	}
 
 	async function onChange(event: any) {
-		if (
-			$page.data.subscriptionStatus.code === 'FREE_TIER_LIMIT_REACHED' ||
-			$page.data.subscriptionStatus.code === 'SUBSCRIPTION_EXPIRED'
-		) {
+		if (data.data.code === 'FREE_TIER_LIMIT_REACHED' || data.data.code === 'SUBSCRIPTION_EXPIRED') {
 			$premiumDialogOpen = true;
 			return;
 		}
 
 		if (
-			$page.data.subscriptionStatus.userSubscriptionData.imageRestorationCreditsUsed >=
+			(data.data.userSubscriptionData?.imageRestorationCreditsUsed as number) >=
 			Number(PUBLIC_PREMIUM_TIER_CREDITS)
 		) {
 			$premiumTierLimitDialogOpen.open = true;
