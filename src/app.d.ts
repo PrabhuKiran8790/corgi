@@ -1,6 +1,5 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
-import { userDataType, userSubscriptionDataType } from '$lib/db/utils';
 
 declare global {
 	namespace App {
@@ -9,8 +8,26 @@ declare global {
 			completeUserData: {
 				code: string;
 				status: boolean;
-				userData: userDataType;
-				userSubscriptionData: userSubscriptionDataType;
+				userData: {
+					id: string;
+					name: string | null;
+					email: string;
+					emailVerified: Date | null;
+					image: string | null;
+					createdAt: Date | null;
+					creditsUsed: number;
+				} | null;
+				userSubscriptionData: {
+					id: string;
+					email: string;
+					stripeCustomerId: string;
+					stripeSubscriptionId: string;
+					stripePriceId: string | null;
+					stripeCurrentPeriodEnd: Date;
+					imageGenerationCreditsUsed: number;
+					audioGenerationCreditsUsed: number;
+					imageRestorationCreditsUsed: number;
+				} | null;
 			};
 
 			getSession: () => Promise<{

@@ -14,7 +14,8 @@ export const POST = async (event) => {
 		}
 		const { messages } = await event.request.json();
 
-		const { userData } = event.locals.completeUserData;
+		const { userData, userSubscriptionData } = event.locals.completeUserData;
+		console.log(userSubscriptionData)
 		const subscriptionStatus = event.locals.completeUserData.code;
 
 		if (subscriptionStatus === "FREE_TIER_LIMIT_REACHED") {
