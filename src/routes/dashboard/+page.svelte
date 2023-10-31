@@ -11,7 +11,33 @@
 	let routes = getRoutes(['/dashboard', '/dashboard/settings']);
 </script>
 
-<MetaTags title="Dashboard | Corgi" description="Create anything with AI" />
+<MetaTags
+	title="Dashboard | Corgi AI"
+	description="Create anything with AI"
+	openGraph={{
+		title: 'Dashboard | Corgi AI',
+		description: 'Create anything with AI',
+		images: [
+			{
+				url: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+				width: 800,
+				height: 600,
+				alt: 'Og Image Alt'
+			}
+		],
+		siteName: 'Dall-E Clone'
+	}}
+	twitter={{
+		handle: '@prabhukirantwt',
+		site: '@corgi-ai',
+		cardType: 'summary_large_image',
+		title: 'Dashboard | Corgi AI',
+		description: 'Create anything with AI',
+		image:
+			'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+		imageAlt: 'Twitter image alt'
+	}}
+/>
 
 <div class="mt-4 mb-8 lg:mt-10">
 	<div class="w-full p-3 mb-8 space-y-2 text-center">

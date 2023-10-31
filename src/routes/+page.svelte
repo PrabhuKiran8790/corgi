@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DialogFooter from './../lib/components/ui/dialog/dialog-footer.svelte';
 	import { page } from '$app/stores';
 	import corgiTyping from '$lib/assets/corgi-typing-no-bg.png';
 	import { Button } from '$lib/components/ui/button';
@@ -9,6 +10,7 @@
 	import { pricingDialogOpen } from '$lib/stores';
 	import { PricingDialog } from '$lib/components';
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	let routes = getRoutes(['/dashboard', '/dashboard/settings']);
 
@@ -16,6 +18,34 @@
 		window.document.documentElement.classList.add('dark');
 	});
 </script>
+
+<MetaTags
+	title="Corgi AI"
+	description="Create anything with AI"
+	openGraph={{
+		title: 'Corgi AI',
+		description: 'Create anything with AI',
+		images: [
+			{
+				url: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+				width: 800,
+				height: 600,
+				alt: 'Og Image Alt'
+			}
+		],
+		siteName: 'Dall-E Clone'
+	}}
+	twitter={{
+		handle: '@prabhukirantwt',
+		site: '@corgi-ai',
+		cardType: 'summary_large_image',
+		title: 'Corgi AI',
+		description: 'Create anything with AI',
+		image:
+			'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+		imageAlt: 'Twitter image alt'
+	}}
+/>
 
 <div class="bg-[#080808] min-h-screen">
 	<!-- navbar -->
@@ -49,12 +79,17 @@
 
 			<div class="flex flex-col md:flex-row items-center justify-center gap-4">
 				<Button
-					variant="gradient"
+					variant={$page.data.session ? 'default' : 'gradient'}
 					size="lg"
 					class="text-lg"
 					href={$page.data.session ? '/dashboard' : '/login'}
-					>Get Started
-					<Sparkles class="ml-3" />
+				>
+					{#if $page.data.session}
+						Dashboard
+					{:else}
+						Get Started
+						<Sparkles class="ml-3" />
+					{/if}
 				</Button>
 
 				<Button

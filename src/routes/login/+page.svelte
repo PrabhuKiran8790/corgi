@@ -35,7 +35,33 @@
 	};
 </script>
 
-<MetaTags title="Login | Corgi" description="Create anything with AI" />
+<MetaTags
+	title="Login | Corgi AI"
+	description="Create anything with AI"
+	openGraph={{
+		title: 'Login | Corgi AI',
+		description: 'Create anything with AI',
+		images: [
+			{
+				url: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+				width: 800,
+				height: 600,
+				alt: 'Og Image Alt'
+			}
+		],
+		siteName: 'Dall-E Clone'
+	}}
+	twitter={{
+		handle: '@prabhukirantwt',
+		site: '@corgi-ai',
+		cardType: 'summary_large_image',
+		title: 'Login | Corgi AI',
+		description: 'Create anything with AI',
+		image:
+			'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+		imageAlt: 'Twitter image alt'
+	}}
+/>
 
 <div class="flex items-center justify-center h-full overflow-x-hidden">
 	<Card.Root
