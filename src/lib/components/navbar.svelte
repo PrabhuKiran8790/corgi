@@ -35,7 +35,7 @@
 			</div>
 		{/each}
 	</div>
-	<div class="flex justify-end">
+	<div class="flex justify-end mr-2">
 		<UserButton />
 	</div>
 </div>

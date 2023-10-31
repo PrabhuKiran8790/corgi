@@ -2,38 +2,20 @@
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { getRoutes } from '$lib/config';
-	import { premiumDialogOpen } from '$lib/stores';
+	import { pricingDialogOpen } from '$lib/stores';
 	import { cn } from '$lib/utils';
 	import { Check, Loader, Sparkles } from 'lucide-svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from './ui/button';
-	import axios from 'axios';
-	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	const routes = getRoutes(['/dashboard', '/dashboard/settings']);
-
-	let loading = false;
-
-	const onSubscribe = async () => {
-		try {
-			loading = true;
-
-			const response = await axios.get('/api/checkout');
-			if (response) {
-				goto(response.data.url);
-			}
-		} catch (error) {
-			console.log(error);
-		} finally {
-			loading = false;
-		}
-	};
 </script>
 
 <Dialog.Root
-	open={$premiumDialogOpen}
+	open={$pricingDialogOpen}
 	onOpenChange={() => {
-		$premiumDialogOpen = false;
+		$pricingDialogOpen = false;
 	}}
 >
 	<Dialog.Overlay class="opacity-[0.05]" />
@@ -76,14 +58,9 @@
 							>
 						</Card.Root>
 					{/each}
-					<Button variant="gradient" on:click={onSubscribe}>
-						Upgrade
-						{#if loading}
-							<Loader class="ml-2 animate-spin" />
-						{:else}
-							<Sparkles class="ml-2" />
-						{/if}
-					</Button>
+					{#if !$page.data.session}
+						<Button variant="gradient">Login to manage subscription</Button>
+					{/if}
 				</div>
 			</Dialog.Description>
 		</Dialog.Header>

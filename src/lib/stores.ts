@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 export const darkmode = writable(true);
 export const premiumDialogOpen = writable(false);
+export const pricingDialogOpen = writable(false)
 
 export const premiumTierLimitDialogOpen = writable<{
 	open: boolean;
