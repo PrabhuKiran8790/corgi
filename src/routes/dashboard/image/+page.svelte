@@ -3,7 +3,6 @@
 	import * as Form from '$lib/components/ui/form';
 	import * as Card from '$lib/components/ui/card';
 	import { Download, Loader2, Sparkles } from 'lucide-svelte';
-	import { page } from '$app/stores';
 	import { Button } from '$lib/components/ui/button';
 	import type { ActionData, PageData } from './$types';
 	import { MetaTags } from 'svelte-meta-tags';

@@ -1,15 +1,18 @@
-<script>
+<script lang="ts">
 	import { MobileSidebar, UserButton } from '$lib/components';
 	import { getRoutes } from '$lib/config';
 	import { cn } from '$lib/utils';
 	import { page } from '$app/stores';
 	let routes = getRoutes(['/dashboard']);
+
+	export let subscriptionStatusCode: string;
+	export let credits: number;
 </script>
 
 <div
 	class="text-foreground/60 bg-white dark:bg-black border-b top-0 p-2 right-0 left-0 h-20 z-50 flex items-center justify-between fixed md:ml-72"
 >
-	<MobileSidebar />
+	<MobileSidebar {subscriptionStatusCode} {credits} />
 	<div class="flex-1">
 		{#each routes as route (route.href)}
 			<div class={$page.url.pathname === route.href ? 'border-0 shadow-none ml-2' : 'hidden'}>

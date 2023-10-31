@@ -20,7 +20,10 @@
 	</div>
 	<main class="md:pl-72">
 		<div class="flex flex-col h-screen">
-			<Navbar />
+			<Navbar
+				subscriptionStatusCode={data.data.code}
+				credits={data.data.userData?.creditsUsed || 0}
+			/>
 			<div class="flex-grow mt-20">
 				<slot />
 			</div>

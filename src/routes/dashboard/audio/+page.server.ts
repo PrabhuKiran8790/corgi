@@ -7,9 +7,9 @@ import { PUBLIC_PREMIUM_TIER_CREDITS } from '$env/static/public';
 import type { PageServerLoad } from '../$types';
 import { incrementCreditsUsed } from '$lib/db/utils';
 
-export const load: PageServerLoad = () => {
+export const load: PageServerLoad = async () => {
 	return {
-		audioForm: superValidate(AudioSchema)
+		audioForm: await superValidate(AudioSchema),
 	};
 };
 

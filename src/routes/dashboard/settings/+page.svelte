@@ -56,7 +56,7 @@
 	let submitting = false;
 
 	$: {
-		if (form?.status === 'SAME_NAME' || form?.status === 'INVALID_FORM') {
+		if (!form?.form?.valid || form?.status === 'SAME_NAME' || form?.status === 'INVALID_FORM') {
 			submitting = false;
 		}
 
@@ -86,8 +86,16 @@
 <div class="p-4 h-full">
 	<div class="flex flex-col gap-10">
 		<div class="max-w-4xl w-full mx-auto">
-			<Form.Root schema={formSchema} form={settingsForm} let:config method="POST">
-				<Card.Root class="w-full">
+			<Card.Root class="w-full">
+				<Form.Root
+					schema={formSchema}
+					form={settingsForm}
+					let:config
+					method="POST"
+					on:submit={() => {
+						submitting = true;
+					}}
+				>
 					<div class="flex items-center justify-between">
 						<div>
 							<Card.Header>
@@ -96,7 +104,7 @@
 							<Card.Content>
 								<Card.Description class="space-y-4">
 									<Form.Field {config} name="username">
-										<Form.Item>
+										<Form.Item class="w-[215px] md:w-[260px]">
 											<Form.Label>Username</Form.Label>
 											<div class="flex items-center space-x-2">
 												<Form.Input
@@ -109,8 +117,8 @@
 													<Loader2 class="h-5 w-5 animate-spin" />
 												{/if}
 											</div>
-											<Form.Description>Username should be 4 to 32 characters long</Form.Description
-											>
+											<!-- <Form.Description>Username should be 4 to 32 characters long</Form.Description
+											> -->
 											<Form.Validation />
 										</Form.Item>
 									</Form.Field>
@@ -139,13 +147,7 @@
 					</div>
 					<Separator />
 					<div class="flex items-center justify-end p-2">
-						<Form.Button
-							type="submit"
-							on:click={() => {
-								submitting = true;
-								console.log(submitting);
-							}}
-						>
+						<Form.Button type="submit">
 							{#if submitting}
 								<Loader2 class="h-5 w-5 animate-spin mr-2" />
 							{/if}
@@ -155,8 +157,8 @@
 							Save
 						</Form.Button>
 					</div>
-				</Card.Root>
-			</Form.Root>
+				</Form.Root>
+			</Card.Root>
 		</div>
 		<div class="max-w-4xl w-full mx-auto">
 			<Card.Root>
@@ -167,7 +169,7 @@
 						</Card.Header>
 						<Card.Content>
 							<Card.Description>
-								<div class="mb-3 flex items-center justify-between">
+								<div class="mb-3 flex items-center justify-between gap-2">
 									<div>
 										<span class="text-base">Current Plan: </span>
 										{#if planStatus === 'FREE_TIER'}

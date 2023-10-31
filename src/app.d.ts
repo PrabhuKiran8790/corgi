@@ -6,7 +6,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			completeUserData: {
-				code: string;
+				code: 'FREE_TIER' | 'SUBSCRIPTION_VALID' | 'SUBSCRIPTION_EXPIRED' | 'FREE_TIER_LIMIT_REACHED';
 				status: boolean;
 				userData: {
 					id: string;

@@ -7,6 +7,7 @@ export const config = {
 	runtime: 'edge'
 };
 
+
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
 		const data = await request.formData();

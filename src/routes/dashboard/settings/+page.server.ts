@@ -5,12 +5,6 @@ import { db } from '$lib/db';
 import { users } from '$lib/db/schema';
 import { eq } from 'drizzle-orm';
 
-export async function load() {
-	return {
-		form: superValidate(formSchema)
-	};
-}
-
 export const actions: Actions = {
 	default: async (event) => {
 		const form = await superValidate(event, formSchema);
@@ -28,15 +22,6 @@ export const actions: Actions = {
 				status: 'SAME_NAME'
 			});
 		}
-
-		// await db.user.update({
-		// 	where: {
-		// 		email: user?.email as string
-		// 	},
-		// 	data: {
-		// 		name: form.data.username
-		// 	}
-		// });
 
 		await db
 			.update(users)
