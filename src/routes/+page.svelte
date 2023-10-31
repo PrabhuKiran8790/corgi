@@ -27,13 +27,13 @@
 		description: 'Create anything with AI',
 		images: [
 			{
-				url: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+				url: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/main/static/corgi-home-min.png',
 				width: 800,
-				height: 600,
+				height: 500,
 				alt: 'Og Image Alt'
 			}
 		],
-		siteName: 'Dall-E Clone'
+		siteName: 'Corgi AI'
 	}}
 	twitter={{
 		handle: '@prabhukirantwt',
@@ -41,8 +41,7 @@
 		cardType: 'summary_large_image',
 		title: 'Corgi AI',
 		description: 'Create anything with AI',
-		image:
-			'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/blob/main/static/corgi-home-min.png',
+		image: 'https://raw.githubusercontent.com/PrabhuKiran8790/corgi/main/static/corgi-home-min.png',
 		imageAlt: 'Twitter image alt'
 	}}
 />
